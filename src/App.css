@@ -11,7 +11,8 @@
 }
 
 .cell,
-.body-cell {
+.body-cell,
+.feed-cell {
   box-sizing: border-box;
   float: left;
   width: 1.8rem;
@@ -21,4 +22,9 @@
 
 .body-cell {
   background: blue;
+}
+
+.feed-cell {
+  background: coral;
+  border-radius: 50%;
 }

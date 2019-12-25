@@ -1,7 +1,7 @@
 import React from "react";
 import { Rows, Cols, Cell, Body, Feed } from "./Config";
 
-function Box({ board }) {
+function Box({ board, handleKey }) {
   const boxes = [];
 
   for (let row = 0; row < Rows; row++) {
@@ -15,7 +15,12 @@ function Box({ board }) {
   }
 
   return (
-    <div style={{ width: Cols * Cell, height: Rows * Cell }} className="board">
+    <div
+      style={{ width: Cols * Cell, height: Rows * Cell }}
+      tabIndex={0}
+      onKeyDown={handleKey}
+      className="board"
+    >
       {boxes}
     </div>
   );

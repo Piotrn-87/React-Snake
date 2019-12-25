@@ -41,11 +41,14 @@ class Start extends React.Component {
 
     if (food) {
       const maxBoxes = Rows * Cols;
+
       let i;
+
       do {
         i = Math.floor(Math.random() * maxBoxes);
-        console.log(i);
       } while (board[i]);
+
+      board[i] = Feed;
     } else {
       board[snake.pop()] = null;
     }
@@ -62,6 +65,11 @@ class Start extends React.Component {
         setTimeout(this.Qube, 200);
       }
     );
+  };
+
+  handleKey = event => {
+    const direction = event.nativeEvent.keyCode;
+    console.log("KEY" + direction);
   };
 
   forward = (head, direction) => {
@@ -88,11 +96,7 @@ class Start extends React.Component {
   };
 
   render() {
-    return (
-      <div>
-        <Box board={this.state.board} />
-      </div>
-    );
+    return <Box handleKey={this.handleKey} board={this.state.board} />;
   }
 }
 export default Start;
