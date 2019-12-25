@@ -25,7 +25,7 @@ class Start extends React.Component {
       {
         board,
         snake,
-        direction: Key.left
+        direction: Key.down
       },
       () => {
         this.Qube();
@@ -37,10 +37,21 @@ class Start extends React.Component {
     const { snake, board, direction } = this.state;
     const head = this.forward(snake[0], direction);
 
+    const food = board[head] === Feed || snake.length === 1;
+
+    if (food) {
+      const maxBoxes = Rows * Cols;
+      let i;
+      do {
+        i = Math.floor(Math.random() * maxBoxes);
+        console.log(i);
+      } while (board[i]);
+    } else {
+      board[snake.pop()] = null;
+    }
+
     board[head] = Body;
     snake.unshift(head);
-
-    board[snake.pop()] = null;
 
     this.setState(
       {
@@ -56,8 +67,6 @@ class Start extends React.Component {
   forward = (head, direction) => {
     let x = head % Cols;
     let y = Math.floor(head / Cols);
-
-    console.log(x, y);
 
     switch (direction) {
       case Key.up:
