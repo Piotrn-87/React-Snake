@@ -1,18 +1,15 @@
 import React from "react";
 import "./App.css";
 import Box from "./Box";
-import { Game, Body, Feed } from "./Config";
+import { Game, Body, Feed, Key, Cols, Rows } from "./Config";
 
 class Start extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      board: [],
-      snake: [],
-      direction: null,
-      gameOver: false
-    };
-  }
+  state = {
+    board: [],
+    snake: [],
+    direction: null,
+    gameOver: false
+  };
 
   componentDidMount() {
     this.start();
@@ -20,12 +17,73 @@ class Start extends React.Component {
 
   start = () => {
     const board = [];
-    board[Start] = Body;
     const snake = [Game];
+
+    board[Game] = Body;
+
+    this.setState(
+      {
+        board,
+        snake,
+        direction: Key.left
+      },
+      () => {
+        this.Qube();
+      }
+    );
+  };
+
+  Qube = () => {
+    const { snake, board, direction } = this.state;
+    const head = this.forward(snake[0], direction);
+
+    board[head] = Body;
+    snake.unshift(head);
+
+    board[snake.pop()] = null;
+
+    this.setState(
+      {
+        board,
+        snake
+      },
+      () => {
+        setTimeout(this.Qube, 200);
+      }
+    );
+  };
+
+  forward = (head, direction) => {
+    let x = head % Cols;
+    let y = Math.floor(head / Cols);
+
+    console.log(x, y);
+
+    switch (direction) {
+      case Key.up:
+        y = y <= 0 ? Rows : y - 1;
+        break;
+      case Key.down:
+        y = y >= Rows ? 0 : y + 1;
+        break;
+      case Key.left:
+        x = x <= 0 ? Cols - 1 : x - 1;
+        break;
+      case Key.right:
+        x = x >= Cols - 1 ? 0 : x + 1;
+        break;
+      default:
+        return;
+    }
+    return Cols * y + x;
   };
 
   render() {
-    return <h1>Hello Amanda. I want to play a game ... </h1>;
+    return (
+      <div>
+        <Box board={this.state.board} />
+      </div>
+    );
   }
 }
 export default Start;

@@ -4,16 +4,21 @@
 
 .board {
   margin: auto;
-  background: green;
+  background: lightgray;
   overflow: hidden;
   outline: none;
   border: 2px solid black;
 }
 
-.cell {
+.cell,
+.body-cell {
   box-sizing: border-box;
   float: left;
-  width: 2rem;
-  height: 2rem;
+  width: 1.8rem;
+  height: 1.8rem;
   overflow: hidden;
+}
+
+.body-cell {
+  background: blue;
 }
