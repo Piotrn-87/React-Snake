@@ -1,19 +1,29 @@
 import React from "react";
 import "./App.css";
 import Box from "./Box";
-import { Game, Body, Feed, Key, Cols, Rows } from "./Config";
+import { Game, Body, Feed, Key, Cols, Rows, Direction } from "./Config";
 
 class Start extends React.Component {
   state = {
     board: [],
     snake: [],
     direction: null,
-    gameOver: false
+    gameOver: false,
+    text: "Game Over"
   };
 
   componentDidMount() {
     this.start();
   }
+
+  Stop = (snake, head) => {
+    if (snake.indexOf(head) !== -1) {
+      this.setState({
+        gameOver: true
+      });
+      return;
+    }
+  };
 
   start = () => {
     const board = [];
@@ -25,7 +35,7 @@ class Start extends React.Component {
       {
         board,
         snake,
-        direction: Key.down
+        direction: Key.left
       },
       () => {
         this.Qube();
@@ -34,10 +44,21 @@ class Start extends React.Component {
   };
 
   Qube = () => {
-    const { snake, board, direction } = this.state;
+    let { snake, board, direction } = this.state;
     const head = this.forward(snake[0], direction);
 
     const food = board[head] === Feed || snake.length === 1;
+
+    if (snake.indexOf(head) !== -1) {
+      this.setState({
+        gameOver: true
+      });
+      return (
+        <div>
+          <h1>Game over</h1>
+        </div>
+      );
+    }
 
     if (food) {
       const maxBoxes = Rows * Cols;
@@ -56,20 +77,32 @@ class Start extends React.Component {
     board[head] = Body;
     snake.unshift(head);
 
+    if (this.nextDirection) {
+      direction = this.nextDirection;
+      this.nextDirection = null;
+    }
+
     this.setState(
       {
         board,
-        snake
+        snake,
+        direction
       },
       () => {
-        setTimeout(this.Qube, 200);
+        setTimeout(this.Qube, 100);
       }
     );
   };
 
   handleKey = event => {
-    const direction = event.nativeEvent.keyCode;
-    console.log("KEY" + direction);
+    const directionOnKey = event.nativeEvent.keyCode;
+    console.log(directionOnKey);
+
+    const position = Math.abs(this.state.direction - directionOnKey);
+
+    if (Direction[directionOnKey] && position !== 0 && position !== 2) {
+      this.nextDirection = directionOnKey;
+    }
   };
 
   forward = (head, direction) => {
@@ -96,7 +129,12 @@ class Start extends React.Component {
   };
 
   render() {
-    return <Box handleKey={this.handleKey} board={this.state.board} />;
+    return (
+      <div>
+        <h1>Welcome Amanda I want to play a game</h1>
+        <Box board={this.state.board} handleKey={this.handleKey} />
+      </div>
+    );
   }
 }
 export default Start;
