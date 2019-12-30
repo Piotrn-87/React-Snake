@@ -3,6 +3,15 @@ import "./App.css";
 import Box from "./Box";
 import { Game, Body, Feed, Key, Cols, Rows, Direction } from "./Config";
 
+const randomCoordinates = () => {
+  let min = 1;
+  let max = 99;
+  let x = Math.floor((Math.random() * (max - min + 1) + min) / 2) * 2;
+  let y = Math.floor((Math.random() * (max - min + 1) + min) / 2) * 2;
+
+  return [x, y];
+};
+
 class Start extends React.Component {
   state = {
     board: [],
@@ -53,11 +62,8 @@ class Start extends React.Component {
       this.setState({
         gameOver: true
       });
-      return (
-        <div>
-          <h1>Game over</h1>
-        </div>
-      );
+      alert("Game over");
+      return;
     }
 
     if (food) {
@@ -131,7 +137,6 @@ class Start extends React.Component {
   render() {
     return (
       <div>
-        <h1>Welcome Amanda I want to play a game</h1>
         <Box board={this.state.board} handleKey={this.handleKey} />
       </div>
     );
