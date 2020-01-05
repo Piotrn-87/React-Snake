@@ -12,6 +12,16 @@ const randomCoordinates = () => {
   return [x, y];
 };
 
+const initialState = {
+  food: randomCoordinates(),
+  speed: 50,
+  direction: "RIGHT",
+  snakeDots: [
+    [0, 0],
+    [2, 0]
+  ]
+};
+
 class Start extends React.Component {
   state = {
     board: [],
