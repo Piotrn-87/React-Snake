@@ -1,30 +1,3 @@
 .App {
   text-align: center;
 }
-
-.board {
-  margin: auto;
-  background: lightgray;
-  overflow: hidden;
-  outline: none;
-  border: 2px solid black;
-}
-
-.cell,
-.body-cell,
-.feed-cell {
-  box-sizing: border-box;
-  float: left;
-  width: 1.8rem;
-  height: 1.8rem;
-  overflow: hidden;
-}
-
-.body-cell {
-  background: blue;
-}
-
-.feed-cell {
-  background: coral;
-  border-radius: 50%;
-}
