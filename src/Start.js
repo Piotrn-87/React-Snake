@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Food from "./Food";
+import Snake from "./Snake";
 
 const randomCoordinates = () => {
   let min = 1;
@@ -21,7 +23,17 @@ const initialState = {
 
 class Start extends Component {
   state = initialState;
+
+  render() {
+    return (
+      <div>
+        <Snake snakeDots={this.state.snakeDots} />
+        <Food dot={this.state.food} />
+      </div>
+    );
+  }
 }
+export default Start;
 
 // import React from "react";
 // import "./App.css";

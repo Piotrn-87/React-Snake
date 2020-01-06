@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
+
 import Start from "./Start";
 
 function App() {
   return (
-    <div className="App">
+    <div className="Game-arena">
       <Start />
     </div>
   );
