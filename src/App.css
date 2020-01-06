@@ -3,7 +3,7 @@ body {
 }
 
 .game-arena {
-  background: #ccc;
+  background: cornsilk;
   border: 2px solid #000;
   height: 39rem;
   margin: .8rem auto;
@@ -13,7 +13,7 @@ body {
 
 .snake-dot {
   background: linear-gradient(235deg, #89ff00, #010615);
-  border: 1px solid #fff;
+  border: 1px solid #ccc;
   height: 2%;
   position: absolute;
   width: 2%;
@@ -21,7 +21,7 @@ body {
 
 .snake-food {
   background: #010615;
-  border: 1px solid #fff;
+  border: 1px solid #ccc;
   height: 2%;
   position: absolute;
   width: 2%;

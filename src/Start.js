@@ -13,8 +13,8 @@ const randomCoordinates = () => {
 
 const initialState = {
   food: randomCoordinates(),
-  speed: 50,
-  direction: "Right",
+  speed: 500,
+  direction: "Down",
   snakeDots: [
     [0, 0],
     [2, 0]
@@ -23,6 +23,64 @@ const initialState = {
 
 class Start extends Component {
   state = initialState;
+
+  componentDidMount() {
+    // setInterval(this.moveSnake, this.state.speed);
+    document.onkeydown = this.onKeyDown;
+    console.log(this.state.snakeDots);
+  }
+
+  onKeyDown = e => {
+    e = e || window.event;
+    switch (e.keyCode) {
+      case 37:
+        this.setState({ direction: "Left" });
+        break;
+      case 38:
+        this.setState({ direction: "Up" });
+        break;
+      case 39:
+        this.setState({ direction: "Right" });
+        break;
+      case 40:
+        this.setState({ direction: "Down" });
+        break;
+      default:
+        return;
+    }
+  };
+
+  moveSnake = () => {
+    let dots = [...this.state.snakeDots];
+    let headSnake = dots[dots.length - 1];
+
+    switch (this.state.direction) {
+      case "Left":
+        headSnake = [headSnake[0] - 2, headSnake[1]];
+        break;
+      case "Up":
+        headSnake = [headSnake[0], headSnake[1] - 2];
+        break;
+      case "Right":
+        headSnake = [headSnake[0] + 2, headSnake[1]];
+        break;
+      case "Down":
+        headSnake = [headSnake[0], headSnake[1] + 2];
+        break;
+      default:
+        return;
+    }
+    dots.push(headSnake);
+    dots.shift();
+    this.setState({
+      snakeDots: dots
+    });
+  };
+
+  gameOver = () => {
+    alert(`Game over. Snake length is ${this.state.snakeDots.length}`);
+    this.setState(initialState);
+  };
 
   render() {
     return (
