@@ -1,7 +1,28 @@
-.Game-arena {
+body {
+  background: radial-gradient(#246, #002);
+}
+
+.game-arena {
+  background: #ccc;
   border: 2px solid #000;
   height: 39rem;
   margin: .8rem auto;
   position: relative;
   width: 39rem;
+}
+
+.snake-dot {
+  background: linear-gradient(235deg, #89ff00, #010615);
+  border: 1px solid #fff;
+  height: 2%;
+  position: absolute;
+  width: 2%;
+}
+
+.snake-food {
+  background: #010615;
+  border: 1px solid #fff;
+  height: 2%;
+  position: absolute;
+  width: 2%;
 }

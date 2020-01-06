@@ -5,7 +5,7 @@ import Start from "./Start";
 
 function App() {
   return (
-    <div className="Game-arena">
+    <div className="game-arena">
       <Start />
     </div>
   );
