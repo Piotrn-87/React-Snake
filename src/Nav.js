@@ -1,14 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Nav extends Component {
-  handleClick = e => {
-    e.preventDefault();
-    console.log("Start");
-  };
-
-  render() {
-    return <button onClick={this.handleClick}>Start</button>;
-  }
-}
+const Nav = props => {
+  return (
+    <form className="form">
+      <button className="button__start" onClick={props.start}>
+        Start
+      </button>
+      <button className="button__stop" onClick={props.stop}>
+        Stop
+      </button>
+    </form>
+  );
+};
 
 export default Nav;

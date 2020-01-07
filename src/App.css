@@ -27,3 +27,15 @@ body {
   position: absolute;
   width: 2%;
 }
+
+.button__start {
+  position: absolute;
+  top: 0;
+  left: -20%;
+}
+
+.button__stop {
+  position: absolute;
+  top: 5%;
+  left: -20%;
+}

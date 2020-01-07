@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Food from "./Food";
 import Snake from "./Snake";
+import Nav from "./Nav";
 
 const randomCoordinates = () => {
   let min = 1;
@@ -27,18 +28,31 @@ class Start extends Component {
     food: randomCoordinates(),
     speed: 100,
     direction: "Right",
+    game: false,
     snakeDots: [
       [2, 2],
       [4, 2]
     ]
   };
 
-  componentDidMount() {
+  handleStart = event => {
+    this.setState({
+      game: true
+    });
+    event.preventDefault();
     let speedSnake = this.state.speed;
-    // setInterval(this.moveSnake, speedSnake);
-    this.moveSnake();
+    setInterval(this.moveSnake, speedSnake);
     document.onkeydown = this.onKeyDown;
-  }
+    this.setState(initialState);
+    console.log("Lllllllets get ready to rumbleee !!!");
+  };
+
+  handleStop = event => {
+    event.preventDefault();
+    clearInterval(this.moveSnake);
+    console.log("Stop");
+    this.stopSnake();
+  };
 
   componentDidUpdate() {
     this.checkBorders();
@@ -64,6 +78,12 @@ class Start extends Component {
       default:
         return;
     }
+  };
+
+  stopSnake = () => {
+    this.setState({
+      speed: 100000000
+    });
   };
 
   moveSnake = () => {
@@ -133,7 +153,7 @@ class Start extends Component {
   increaseSpeed = () => {
     if (this.state.speed >= 10) {
       this.setState({
-        speed: this.state.speed - 50
+        speed: this.state.speed - 5
       });
     }
     console.log(this.state.speed);
@@ -147,6 +167,7 @@ class Start extends Component {
   render() {
     return (
       <div>
+        <Nav start={this.handleStart} stop={this.handleStop} />
         <Snake snakeDots={this.state.snakeDots} />
         <Food dot={this.state.food} />
       </div>
