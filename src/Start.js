@@ -13,8 +13,8 @@ const randomCoordinates = () => {
 
 const initialState = {
   food: randomCoordinates(),
-  speed: 200,
-  direction: "Down",
+  speed: 100,
+  direction: "Right",
   snakeDots: [
     [2, 2],
     [4, 2]
@@ -22,17 +22,28 @@ const initialState = {
 };
 
 class Start extends Component {
-  state = initialState;
+  // state = initialState;
+  state = {
+    food: randomCoordinates(),
+    speed: 100,
+    direction: "Right",
+    snakeDots: [
+      [2, 2],
+      [4, 2]
+    ]
+  };
 
   componentDidMount() {
-    setInterval(this.moveSnake, this.state.speed);
+    let speedSnake = this.state.speed;
+    // setInterval(this.moveSnake, speedSnake);
+    this.moveSnake();
     document.onkeydown = this.onKeyDown;
   }
 
   componentDidUpdate() {
     this.checkBorders();
     this.checkIfEat();
-    // this.checkCollapsed();
+    this.checkCollapsed();
   }
 
   onKeyDown = e => {
@@ -82,11 +93,6 @@ class Start extends Component {
     });
   };
 
-  gameOver = () => {
-    alert(`Game over. Snake length is ${this.state.snakeDots.length}`);
-    this.setState(initialState);
-  };
-
   checkIfEat = () => {
     let head = this.state.snakeDots[this.state.snakeDots.length - 1];
     let food = this.state.food;
@@ -95,6 +101,7 @@ class Start extends Component {
         food: randomCoordinates()
       });
       this.enlargeSnake();
+      this.increaseSpeed();
     }
   };
 
@@ -121,6 +128,20 @@ class Start extends Component {
         this.gameOver();
       }
     });
+  };
+
+  increaseSpeed = () => {
+    if (this.state.speed >= 10) {
+      this.setState({
+        speed: this.state.speed - 50
+      });
+    }
+    console.log(this.state.speed);
+  };
+
+  gameOver = () => {
+    alert(`Game over. Snake length is ${this.state.snakeDots.length}`);
+    this.setState(initialState);
   };
 
   render() {
