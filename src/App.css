@@ -28,14 +28,30 @@ body {
   width: 2%;
 }
 
-.button__start {
+.button__start,
+.button__stop {
+  background: linear-gradient(to right, #a18cd1, #fbc2eb, #a18cd1);
+  background-size: 200%;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  left: -40%;
+  margin: 1rem;
+  padding: 1rem;
   position: absolute;
-  top: 0;
-  left: -20%;
+  text-transform: uppercase;
+  top: 5%;
+  transition: .3s;
+  width: 11rem;
 }
 
 .button__stop {
-  position: absolute;
-  top: 5%;
-  left: -20%;
+  top: 20%;
+}
+
+.button__start:hover,
+.button__stop:hover {
+  background-position-x: 100%;
 }

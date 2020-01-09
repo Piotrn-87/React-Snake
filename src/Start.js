@@ -23,22 +23,9 @@ const initialState = {
 };
 
 class Start extends Component {
-  // state = initialState;
-  state = {
-    food: randomCoordinates(),
-    speed: 100,
-    direction: "Right",
-    game: false,
-    snakeDots: [
-      [2, 2],
-      [4, 2]
-    ]
-  };
+  state = initialState;
 
   handleStart = event => {
-    this.setState({
-      game: true
-    });
     event.preventDefault();
     let speedSnake = this.state.speed;
     setInterval(this.moveSnake, speedSnake);
@@ -51,7 +38,6 @@ class Start extends Component {
     event.preventDefault();
     clearInterval(this.moveSnake);
     console.log("Stop");
-    this.stopSnake();
   };
 
   componentDidUpdate() {
@@ -78,12 +64,6 @@ class Start extends Component {
       default:
         return;
     }
-  };
-
-  stopSnake = () => {
-    this.setState({
-      speed: 100000000
-    });
   };
 
   moveSnake = () => {
