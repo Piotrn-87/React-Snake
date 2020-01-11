@@ -14,4 +14,15 @@ npm start
 # Build for production
 npm run build
 ```
+# TechnologiesI've used
+
+- React
+- Visual Studio Code
+- Git..
+
+# Contact
+ feel free to contact me! 
+ 
+### Version
+1.0.0
 
