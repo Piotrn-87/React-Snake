@@ -21,7 +21,7 @@ npm run build
 - Git..
 
 # Contact
- feel free to contact me! 
+ feel free to contact with me! 
  
 ### Version
 1.0.0
