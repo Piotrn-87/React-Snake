@@ -30,14 +30,16 @@ class Start extends Component {
     let speedSnake = this.state.speed;
     setInterval(this.moveSnake, speedSnake);
     document.onkeydown = this.onKeyDown;
-    this.setState(initialState);
     console.log("Lllllllets get ready to rumbleee !!!");
   };
 
   handleStop = event => {
     event.preventDefault();
     clearInterval(this.moveSnake);
-    console.log("Stop");
+    this.setState({
+      speed: 10000
+    });
+    console.log("Stop, speed =>", this.state.speed);
   };
 
   componentDidUpdate() {
