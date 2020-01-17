@@ -30,10 +30,10 @@ body {
 
 .button__start,
 .button__stop {
-  background: linear-gradient(to right, #a18cd1, #fbc2eb, #a18cd1);
-  background-size: 200%;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
   border: none;
-  border-radius: 2px;
+  border-radius: 2rem;
   cursor: pointer;
   font-size: 1.5rem;
   letter-spacing: 2px;
@@ -53,5 +53,16 @@ body {
 
 .button__start:hover,
 .button__stop:hover {
+  animation: animate 8s linear infinite;
   background-position-x: 100%;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 400%;
+  }
 }
