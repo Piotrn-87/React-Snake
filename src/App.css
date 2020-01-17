@@ -66,3 +66,25 @@ body {
     background-position: 400%;
   }
 }
+
+.button__start:before,
+.button__stop:before {
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  bottom: -5px;
+  border-radius: 2rem;
+  content: "";
+  left: -5px;
+  opacity: 0;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  transition: .5s;
+  z-index: -1;
+}
+
+.button__start:hover:before,
+.button__stop:hover:before {
+  animation: animate 8s linear infinite;
+  filter: blur(1rem);
+  opacity: 1;
+}
