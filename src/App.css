@@ -1,4 +1,13 @@
+@media (max-width: 641px) {
+  html {
+    font-size: 10px;
+  }
+}
+
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   background: radial-gradient(#246, #002);
 }
 
@@ -43,8 +52,9 @@ body {
   position: absolute;
   text-transform: uppercase;
   top: 5%;
-  transition: .3s;
+  transition: .5s;
   width: 11rem;
+  z-index: 2020;
 }
 
 .button__stop {
@@ -70,21 +80,21 @@ body {
 .button__start:before,
 .button__stop:before {
   background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
-  bottom: -5px;
+  bottom: -2px;
   border-radius: 2rem;
   content: "";
-  left: -5px;
+  left: -2px;
   opacity: 0;
   position: absolute;
-  right: -5px;
-  top: -5px;
+  right: -2px;
+  top: -2px;
   transition: .5s;
   z-index: -1;
 }
 
 .button__start:hover:before,
 .button__stop:hover:before {
-  animation: animate 8s linear infinite;
-  filter: blur(1rem);
+  animation: animate 4s linear infinite;
+  filter: blur(1.5rem);
   opacity: 1;
 }
