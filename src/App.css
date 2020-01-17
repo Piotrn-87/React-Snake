@@ -14,10 +14,10 @@ body {
 .game-arena {
   background: cornsilk;
   border: 2px solid #000;
-  height: 39rem;
+  height: 35rem;
   margin: .8rem auto;
   position: relative;
-  width: 39rem;
+  width: 35rem;
 }
 
 .snake-dot {
@@ -46,19 +46,20 @@ body {
   cursor: pointer;
   font-size: 1.5rem;
   letter-spacing: 2px;
-  left: 100%;
+  left: 10%;
   margin: 1rem;
   padding: 1rem;
   position: absolute;
   text-transform: uppercase;
-  top: 5%;
+  top: 99%;
   transition: .5s;
   width: 11rem;
   z-index: 2020;
 }
 
 .button__stop {
-  top: 20%;
+  left: 50%;
+  top: 99%;
 }
 
 .button__start:hover,
