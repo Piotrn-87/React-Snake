@@ -15,7 +15,7 @@ body {
   background: cornsilk;
   border: 2px solid #000;
   height: 35rem;
-  margin: .8rem auto;
+  margin: 0.8rem auto;
   position: relative;
   width: 35rem;
 }
@@ -49,11 +49,11 @@ body {
   letter-spacing: 2px;
   left: 10%;
   margin: 1rem;
-  padding: .5rem;
+  padding: 0.5rem;
   position: absolute;
   text-transform: uppercase;
   top: 100%;
-  transition: .5s;
+  transition: 0.5s;
   text-align: center;
   width: 10rem;
   z-index: 2020;
@@ -64,10 +64,12 @@ body {
   top: 100%;
 }
 
-.button__start:hover,
-.button__stop:hover {
-  animation: animate 8s linear infinite;
-  background-position-x: 100%;
+@media (min-width: 641px) {
+  .button__start:hover,
+  .button__stop:hover {
+    animation: animate 8s linear infinite;
+    background-position-x: 100%;
+  }
 }
 
 @keyframes animate {
@@ -80,25 +82,29 @@ body {
   }
 }
 
-.button__start:before,
-.button__stop:before {
-  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
-  background-size: 400%;
-  bottom: -2px;
-  border-radius: 2rem;
-  content: "";
-  left: -2px;
-  opacity: 0;
-  position: absolute;
-  right: -2px;
-  top: -2px;
-  transition: .5s;
-  z-index: -1;
+@media (min-width: 641px) {
+  .button__start:before,
+  .button__stop:before {
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    bottom: -2px;
+    border-radius: 2rem;
+    content: "";
+    left: -2px;
+    opacity: 0;
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    transition: 0.5s;
+    z-index: -1;
+  }
 }
 
-.button__start:hover:before,
-.button__stop:hover:before {
-  animation: animate 8s linear infinite;
-  filter: blur(1rem);
-  opacity: 1;
+@media (min-width: 641px) {
+  .button__start:hover:before,
+  .button__stop:hover:before {
+    animation: animate 8s linear infinite;
+    filter: blur(1rem);
+    opacity: 1;
+  }
 }
