@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Food from "./Food";
 import Snake from "./Snake";
 import Nav from "./Nav";
+import Score from "./Score";
 
 const randomCoordinates = () => {
   let min = 1;
@@ -142,7 +143,7 @@ class Start extends Component {
   };
 
   gameOver = () => {
-    alert(`Game over. Snake length is ${this.state.snakeDots.length}`);
+    alert(`Game over. Try again later`);
     this.setState(initialState);
   };
 
@@ -152,6 +153,7 @@ class Start extends Component {
         <Nav start={this.handleStart} stop={this.handleStop} />
         <Snake snakeDots={this.state.snakeDots} />
         <Food dot={this.state.food} />
+        <Score score={this.state.snakeDots.length} />
       </div>
     );
   }
