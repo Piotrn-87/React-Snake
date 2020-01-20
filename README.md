@@ -18,7 +18,7 @@ npm run build
 
 - React
 - Visual Studio Code
-- Git..
+- Git
 
 # Contact
  feel free to contact with me! 
