@@ -3,6 +3,7 @@ import Food from "./Food";
 import Snake from "./Snake";
 import Nav from "./Nav";
 import Score from "./Score";
+import Controls from "./Controls";
 
 const randomCoordinates = () => {
   let min = 1;
@@ -16,6 +17,16 @@ const randomCoordinates = () => {
 const initialState = {
   food: randomCoordinates(),
   speed: 100,
+  direction: "Right",
+  snakeDots: [
+    [2, 2],
+    [4, 2]
+  ]
+};
+
+const afterGameOver = {
+  food: randomCoordinates(),
+  speed: 100000,
   direction: "Right",
   snakeDots: [
     [2, 2],
@@ -50,23 +61,53 @@ class Start extends Component {
   }
 
   onKeyDown = e => {
-    e = e || window.event;
+    e.preventDefault();
+    e = e || document.event;
     switch (e.keyCode) {
       case 37:
+        this.setState({ direction: "Left" });
+        break;
+      case 65:
         this.setState({ direction: "Left" });
         break;
       case 38:
         this.setState({ direction: "Up" });
         break;
+      case 87:
+        this.setState({ direction: "Up" });
+        break;
       case 39:
+        this.setState({ direction: "Right" });
+        break;
+      case 68:
         this.setState({ direction: "Right" });
         break;
       case 40:
         this.setState({ direction: "Down" });
         break;
+      case 83:
+        this.setState({ direction: "Down" });
+        break;
       default:
         return;
     }
+  };
+
+  keyLeft = e => {
+    e.preventDefault();
+    this.setState({ direction: "Left" });
+  };
+  keyUp = e => {
+    e.preventDefault();
+    this.setState({ direction: "Up" });
+  };
+  keyRight = e => {
+    e.preventDefault();
+    this.setState({ direction: "Right" });
+  };
+  keyDown = e => {
+    e.preventDefault();
+    this.setState({ direction: "Down" });
   };
 
   moveSnake = () => {
@@ -144,7 +185,8 @@ class Start extends Component {
 
   gameOver = () => {
     alert(`Game over. Try again later`);
-    this.setState(initialState);
+    this.setState(afterGameOver);
+    window.location.reload(false);
   };
 
   render() {
@@ -154,6 +196,12 @@ class Start extends Component {
         <Snake snakeDots={this.state.snakeDots} />
         <Food dot={this.state.food} />
         <Score score={this.state.snakeDots.length} />
+        <Controls
+          left={this.keyLeft}
+          up={this.keyUp}
+          right={this.keyRight}
+          down={this.keyDown}
+        />
       </div>
     );
   }
