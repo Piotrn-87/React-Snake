@@ -1,4 +1,5 @@
 import React from "react";
+import "./Food.css";
 
 const food = props => {
   const styleFood = {

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Food from "./Food";
-import Snake from "./Snake";
-import Nav from "./Nav";
-import Score from "./Score";
-import Controls from "./Controls/Controls";
+import Food from "./Components/Food/Food";
+import Snake from "./Components/Snake/Snake";
+import Nav from "./Components/Navigation/Nav";
+import Score from "./Components/Score/Score";
+import Controls from "./Components/Controls/Controls";
 
 const randomCoordinates = () => {
   let min = 1;

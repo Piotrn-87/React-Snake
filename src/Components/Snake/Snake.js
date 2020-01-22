@@ -1,4 +1,5 @@
 import React from "react";
+import "./Snake.css";
 
 const snake = props => {
   return (
