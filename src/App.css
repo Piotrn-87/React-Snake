@@ -19,7 +19,7 @@ body {
   margin: 1rem;
   padding: 0.5rem;
   position: absolute;
-  top: 100%;
+  top: 150%;
   left: 0%;
   text-transform: uppercase;
 }
@@ -68,7 +68,7 @@ body {
   padding: 0.5rem;
   position: absolute;
   text-transform: uppercase;
-  top: 100%;
+  top: 150%;
   transition: 0.5s;
   text-align: center;
   width: 10rem;
@@ -77,13 +77,22 @@ body {
 
 .button__stop {
   left: 60%;
-  top: 100%;
 }
 
-.controls {
-  position: absolute;
-  top: 10%;
-  left: -50%;
+@media (min-width: 641px) {
+
+  .button__start,
+  .button__stop {
+    top: 100%
+  }
+
+  .button__stop {
+    left: 60%;
+  }
+
+  .score {
+    top: 100%;
+  }
 }
 
 @media (min-width: 641px) {
@@ -92,16 +101,6 @@ body {
   .button__stop:hover {
     animation: animate 8s linear infinite;
     background-position-x: 100%;
-  }
-}
-
-@keyframes animate {
-  0% {
-    background-position: 0%;
-  }
-
-  100% {
-    background-position: 400%;
   }
 }
 
@@ -131,5 +130,15 @@ body {
     animation: animate 8s linear infinite;
     filter: blur(1rem);
     opacity: 1;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 400%;
   }
 }

@@ -3,7 +3,7 @@ import Food from "./Food";
 import Snake from "./Snake";
 import Nav from "./Nav";
 import Score from "./Score";
-import Controls from "./Controls";
+import Controls from "./Controls/Controls";
 
 const randomCoordinates = () => {
   let min = 1;
