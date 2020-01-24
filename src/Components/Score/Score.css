@@ -11,3 +11,9 @@
     top: 145%;
     text-transform: uppercase;
 }
+
+@media (min-width: 641px) {
+    .score {
+        top: 100%;
+    }
+}
